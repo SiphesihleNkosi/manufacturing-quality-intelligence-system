@@ -1,4 +1,6 @@
 -- CLEANING --
+===================================
+
 
 SELECT *
 FROM machine_failure_data;
@@ -27,10 +29,6 @@ FROM machine_failure_data;
 SELECT *
 FROM machine_failure_staging;
 
--- REMOVE UNUSED UNIQUE IDENTIFIER
-
-ALTER TABLE machine_failure_staging
-DROP COLUMN `ï»¿UDI`;
 
 -- CHANGING COLUMN NAMES 
 
@@ -150,4 +148,26 @@ FROM duplicate_cte
 WHERE row_num = 1;
 
 SELECT *
+FROM machine_failure_staging_deduplicated;
+
+
+
+
+-- CHECHING FOR NULL values 
+
+SELECT *
+FROM machine_failure_staging_deduplicated;
+
+SELECT
+SUM(CASE WHEN air_temperature_k IS NULL THEN 1 ELSE 0 END) AS missing_air_temperature_k,
+SUM(CASE WHEN process_temperature_k IS NULL THEN 1 ELSE 0 END) AS missing_process_temperature_k,
+SUM(CASE WHEN rotational_speed_rpm IS NULL THEN 1 ELSE 0 END) AS missing_rotational_speed_rpm,
+SUM(CASE WHEN torque_nm IS NULL THEN 1 ELSE 0 END) AS missing_torque_nm,
+SUM(CASE WHEN tool_wear_min IS NULL THEN 1 ELSE 0 END) AS missing_tool_wear_min,
+SUM(CASE WHEN machine_failure IS NULL THEN 1 ELSE 0 END) AS missing_machine_failure,
+SUM(CASE WHEN tool_wear_failure IS NULL THEN 1 ELSE 0 END) AS missing_tool_wear_failure,
+SUM(CASE WHEN heat_dissipation_failure IS NULL THEN 1 ELSE 0 END) AS missing_heat_dissipation_failure,
+SUM(CASE WHEN power_failure IS NULL THEN 1 ELSE 0 END) AS missing_power_failure,
+SUM(CASE WHEN overstrain_failure IS NULL THEN 1 ELSE 0 END) AS missing_overstrain_failure,
+SUM(CASE WHEN random_failure IS NULL THEN 1 ELSE 0 END) AS missing_random_failure
 FROM machine_failure_staging_deduplicated;
