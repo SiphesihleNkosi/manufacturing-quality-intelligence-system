@@ -1,7 +1,7 @@
 -- CLEANING --
 ===================================
 
-
+-- CREATING A STAGING TABLE 
 SELECT *
 FROM machine_failure_data;
 
@@ -30,7 +30,7 @@ SELECT *
 FROM machine_failure_staging;
 
 
--- CHANGING COLUMN NAMES 
+-- RENAME COLUMN NAMES 
 
 ALTER TABLE machine_failure_staging
 RENAME COLUMN `Product ID` TO `product_ID`;
@@ -153,7 +153,7 @@ FROM machine_failure_staging_deduplicated;
 
 
 
--- CHECHING FOR NULL values 
+-- CHECKING FOR NULL values 
 
 SELECT *
 FROM machine_failure_staging_deduplicated;
