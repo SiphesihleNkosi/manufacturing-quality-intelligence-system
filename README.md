@@ -15,10 +15,14 @@ End-to-end manufacturing quality prediction system using SQL, Python and Machine
 
 ## Project Workflow
 
-1. SQL Data Cleaning
-2. Exploratory Data Analysis
-3. Feature Engineering
-4. Binary Classifaction (Logistic Regression)
-5. Multi-class Classification (Neural Network)
-6. Model Evaluation
-7. Deployment-ready Pipeline
+1 SQL
+    a. Joining Tables
+    b. Cleaning
+       - creating stagging table
+       - rename column names
+       - checking duplicates
+       - removing duplicates
+       - checking NULL values
+2. PYTHON
+    a.Exploratory Data Analysis
+  
