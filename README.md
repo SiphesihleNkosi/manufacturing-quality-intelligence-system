@@ -1,59 +1,107 @@
-# manufacturing-quality-intelligence-system
-End-to-end manufacturing quality prediction system using SQL, Python and Machine Learning.
+# Manufacturing Quality Intelligence System
 
-## Tech Stack
--SQL (MySQL)
--Python
--Pandas
--NumPy
--Matplotlib
--Seaborn
--Scikit-learn
--TensowFlow/Keras
--Git
--GitHub
+An end-to-end machine learning project focused on predicting machine failures and identifying the type of machine failure using manufacturing data.
 
-## Project Workflow
+## Project Overview
 
-1 SQL
-    a. Joining Tables
-    b. Cleaning
-       - created a stagging table
-       - renamed column names for consistency
-       - checked for duplicates
-       - removed duplicates
-       - checked for NULL values
-2. PYTHON - Exploratory Data Analysis
-    a. Loaded and inspected the cleaned dataset
-    b. Examined dataset structure and data types
-    c. Completed dataset cleaning
-    d. Analysed numerical features
-    e. Investigated feature distribution
-    f. Investigated machine failure patterns
-    g. Examined potential outliers
-    h.  Identified relationships between variables
-  
-  3. Machine Learning - Classification
-        a. Defined the machine failure target variable 
-        b. Selected relavant predictor features
-        c. Split the data into training and testing sets
-        d. Built preprocessing pipelines
-        e. Applied appropriate numerical & categorical preprocessing
-        f. Built classification models
-        g. Tuned model hyperparameters using cross-validation
-        h. Selected the final model based on evaluation results
-       
-4. Model Evaluation
-The final model was evaluated on unseen test data using 
-    a. Accuracy
-    b. Precision
-    c. Recall
-    d. F1-score
-    e. ROC-AUC
-    e. Confusion matrix
-    f. Classification report
-    g. ROC curve
-    h. Precision-Recall curve
+This repository contains multiple machine learning projects developed using Python, SQL, and machine learning techniques.
 
-5. Model Persistence
-   a. Saved the trained final model using Joblib
+The projects focus on analysing manufacturing data, predicting machine failures, and identifying potential failure types.
+
+
+
+# Project 1: Machine Failure Prediction
+
+## Objective
+
+The objective of this project is to predict whether a machine is likely to experience a failure based on manufacturing and machine operating data.
+
+## Workflow
+
+- Data cleaning using SQL
+- Exploratory Data Analysis
+- Feature engineering
+- Data preprocessing
+- Model development
+- Hyperparameter tuning using GridSearchCV
+- Cross-validation
+- Model comparison
+- Model evaluation
+- Model persistence using Joblib
+
+## Models Used
+
+- Logistic Regression
+- Decision Tree Classifier
+- Random Forest Classifier
+- Gradient Boosting Classifier
+
+## Evaluation Metrics
+
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+- ROC-AUC
+- Confusion Matrix
+- Classification Report
+
+
+
+# Project 2: Machine Failure Type Prediction
+
+## Objective
+
+The objective of this project is to predict the specific type of machine failure.
+
+This project uses multi-label classification, allowing the model to predict multiple failure types independently.
+
+## Workflow
+
+- Data preparation
+- Exploratory Data Analysis
+- Feature preprocessing
+- Multi-label classification
+- Sigmoid activation
+- Model training
+- Model evaluation
+
+## Evaluation Metrics
+
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+- ROC-AUC
+- Classification Report
+- Multi-label Confusion Matrices
+
+s
+
+# Streamlit Application
+
+An interactive Streamlit application was developed to allow users to input machine operating data and receive machine failure predictions.
+
+## Features
+
+- Interactive user interface
+- Machine data input
+- Machine failure predictions
+- Model probability predictions
+- Deployment-ready machine learning application
+
+
+
+# Technology Stack
+
+- Python
+- SQL
+- Pandas
+- NumPy
+- Scikit-learn
+- TensorFlow / Keras
+- Matplotlib
+- Seaborn
+- Streamlit
+- Joblib
+- GitHub
