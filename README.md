@@ -76,7 +76,6 @@ This project uses multi-label classification, allowing the model to predict mult
 - Classification Report
 - Multi-label Confusion Matrices
 
-s
 
 # Streamlit Application
 
