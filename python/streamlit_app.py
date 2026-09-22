@@ -1,5 +1,11 @@
 import streamlit as st
 import pandas as pd
+import joblib
+
+
+# LOAD MODEL
+model_1 = joblib.load("python/machine_failure_model.joblib")["model_1"]
+model_2 = joblib.load("python/machine_failure_type_model.joblib")["model_2"]
 
 st.title("Machine Failure Predictions")
 
@@ -46,29 +52,48 @@ with st.sidebar:
     )
 
 # Table to display input values
-input_data = pd.DataFrame({
-        "Machine Input": [
-        "Prodct Type",
-        "Air Temperature K",
-        "Process Temperature K",
-        "Rotational Speed RPM",
-        "Torque NM",
-        "Tool Wear min"
-    ],
-
-    "Value": [
-        product_type,
-        air_temperature_k,
-        process_temperature_k,
-        rotational_speed_rpm,
-        torque_nm,
-        tool_wear_min
-    ]
+model_input = pd.DataFrame({
+    "product_type": [product_type],
+    "air_temperature_k": [air_temperature_k],
+    "process_temperature_k": [process_temperature_k],
+    "rotational_speed_rpm": [rotational_speed_rpm],
+    "torque_nm": [torque_nm],
+    "tool_wear_min": [tool_wear_min],
+    "machine_operating_process_k": [machine_operating_process_k],
+    "machanical_power": [machanical_power]
 })
-st.dataframe(input_data)
 
-st.subheader("Prediction")
-predict_button = st.button("Predict Machine Failure",
-                           type="primary")
-if predict_button:
-    st.success("Prediction will appear here")
+st.dataframe(model_input.T.reset_index().rename(columns={"index": "Machine Input", 0: "Value"}),
+             use_container_width=True, hide_index=True)
+
+if st.button("Predict"):
+    # Model 1 - use model_input NOT input_data
+    failure_prediction = model_1.predict(model_input)[0]
+
+    if failure_prediction == 0:
+        st.success("No machine failure predicted.")
+    else:
+        st.warning("Machine failure predicted.")
+
+        # Model 2 - use model_input NOT input_data
+        failure_types = model_2.predict(model_input)[0]
+
+        labels = ["Tool Wear Failure", "Power Failure", "Overstrain Failure"]
+
+        predicted_failures = [
+            label
+            for label, prediction
+            in zip(labels, failure_types)
+            if prediction == 1
+        ]
+
+        if predicted_failures:
+            st.subheader("Predicted Failure Type")
+
+            for failure in predicted_failures:
+                st.error(failure)
+
+        else:
+            st.info("Failure detected, but no specific failure type predicted")
+
+
