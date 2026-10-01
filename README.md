@@ -182,7 +182,7 @@ The final model was selected after comparing the candidate models and evaluating
 
 This is treated as a multi-label classification problem, meaning that more than one failure type can potentially be associated with the same machine.
 
-- Failure Types
+Failure Types:
 
  * Tool Wear Failure
  * Power Failure
@@ -191,7 +191,7 @@ This is treated as a multi-label classification problem, meaning that more than 
 
 A neural network was developed using TensorFlow/Keras.
 
-- The model uses:
+The model uses:
 
  * Dense layers
  * ReLU activation
@@ -224,7 +224,7 @@ Power BI was used to turn the manufacturing analysis into an interactive busines
 
 ### Dashboard: Machine Failure Report
 
-- The dashboard provides an overview of:
+The dashboard provides an overview of:
 
 - Total machine
 - Total machine failures
@@ -282,7 +282,7 @@ Python & Data Science
 - Scikit-learn
 - Logistic Regression
 - Decision Trees
-- Random Forest
+- Random Forestss
 - Gradient Boosting
 - TensorFlow/Keras
 - Neural Networks
@@ -334,6 +334,7 @@ Predicting which failure type(s) may occur
 
 
 
+------------------------------------------------------------------
 Author
 
 Siphesihle Nkosi
